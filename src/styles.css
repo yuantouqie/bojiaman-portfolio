@@ -153,6 +153,45 @@ a {
   color: hsl(var(--foreground));
 }
 
+.shiny-text {
+  display: inline-block;
+  color: var(--shiny-color, currentColor);
+  background-image: linear-gradient(
+    var(--shiny-spread, 92deg),
+    var(--shiny-color, #b8f0d1) 0%,
+    var(--shiny-color, #b8f0d1) 34%,
+    var(--shiny-shine, #ffffff) 50%,
+    var(--shiny-color, #b8f0d1) 66%,
+    var(--shiny-color, #b8f0d1) 100%
+  );
+  background-size: 220% auto;
+  background-position: var(--shiny-from, 150%) center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shiny-text-sweep var(--shiny-speed, 2.8s) ease-in-out var(--shiny-delay, 0s) infinite;
+  text-shadow: 0 0 24px rgba(184, 240, 209, 0.1);
+}
+
+.shiny-text-yoyo {
+  animation-direction: alternate;
+}
+
+.shiny-text-pause:hover {
+  animation-play-state: paused;
+}
+
+.nav-links .shiny-text,
+.tool-cloud .shiny-text,
+.nav-cta.shiny-text,
+.hero-cta.shiny-text {
+  text-shadow: 0 0 14px rgba(184, 240, 209, 0.12);
+}
+
+.hero-section h1.shiny-text {
+  filter: drop-shadow(0 18px 42px rgba(10, 44, 29, 0.42));
+}
+
 .nav-cta {
   padding: 0.625rem 1.5rem;
   border-radius: 9999px;
@@ -271,6 +310,23 @@ a {
   max-width: 80rem;
   margin: 0 auto;
   padding: 7.5rem 2rem;
+}
+
+@keyframes shiny-text-sweep {
+  from {
+    background-position: var(--shiny-from, 150%) center;
+  }
+
+  to {
+    background-position: var(--shiny-to, -50%) center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text {
+    animation: none;
+    background-position: 50% center;
+  }
 }
 
 .content-section::before {
@@ -452,6 +508,24 @@ a {
 
 .animate-fade-rise-delay-2 {
   animation: fade-rise 0.8s ease-out 0.4s both;
+}
+
+.shiny-text.animate-fade-rise {
+  animation:
+    fade-rise 0.8s ease-out both,
+    shiny-text-sweep var(--shiny-speed, 2.8s) ease-in-out var(--shiny-delay, 0s) infinite;
+}
+
+.shiny-text.animate-fade-rise-delay {
+  animation:
+    fade-rise 0.8s ease-out 0.2s both,
+    shiny-text-sweep var(--shiny-speed, 2.8s) ease-in-out var(--shiny-delay, 0s) infinite;
+}
+
+.shiny-text.animate-fade-rise-delay-2 {
+  animation:
+    fade-rise 0.8s ease-out 0.4s both,
+    shiny-text-sweep var(--shiny-speed, 2.8s) ease-in-out var(--shiny-delay, 0s) infinite;
 }
 
 @media (min-width: 640px) {

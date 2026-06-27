@@ -1,4 +1,5 @@
 import { initPixelSnow } from './pixelSnow.js';
+import { applyShinyText } from './shinyText.js';
 
 const experienceItems = [
   ["贝壳美家圣都装饰", "实习一年｜全案设计师 AI 辅助设计助理"],
@@ -159,3 +160,33 @@ if (snowHost) {
     farPlane: 24
   });
 }
+
+applyShinyText('.logo, .hero-section h1, .content-section h2', {
+  color: '#b8f0d1',
+  shineColor: '#ffffff',
+  speed: 3.2,
+  delay: 0.2,
+  spread: 88,
+  direction: 'left',
+  yoyo: true
+});
+
+applyShinyText('.section-kicker, .project-card span, .contact-card a', {
+  color: '#7fdca5',
+  shineColor: '#f7fff9',
+  speed: 2.6,
+  delay: 0.1,
+  spread: 104,
+  direction: 'right',
+  yoyo: true
+});
+
+applyShinyText('.nav-links a, .nav-cta, .hero-cta, .tool-cloud span', {
+  color: '#d9f8e6',
+  shineColor: '#ffffff',
+  speed: 2.2,
+  delay: 0,
+  spread: 95,
+  direction: 'left',
+  yoyo: false
+});
