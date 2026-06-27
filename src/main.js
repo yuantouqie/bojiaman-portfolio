@@ -161,7 +161,7 @@ if (snowHost) {
   });
 }
 
-applyShinyText('.logo, .hero-section h1, .content-section h2', {
+applyShinyText('.logo, .hero-section h1 em, .content-section h2', {
   color: '#b8f0d1',
   shineColor: '#ffffff',
   speed: 3.2,
@@ -179,14 +179,4 @@ applyShinyText('.section-kicker, .project-card span, .contact-card a', {
   spread: 104,
   direction: 'right',
   yoyo: true
-});
-
-applyShinyText('.nav-links a, .nav-cta, .hero-cta, .tool-cloud span', {
-  color: '#d9f8e6',
-  shineColor: '#ffffff',
-  speed: 2.2,
-  delay: 0,
-  spread: 95,
-  direction: 'left',
-  yoyo: false
 });
