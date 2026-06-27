@@ -1,3 +1,5 @@
+import { initPixelSnow } from './pixelSnow.js';
+
 const experienceItems = [
   ["贝壳美家圣都装饰", "实习一年｜全案设计师 AI 辅助设计助理"],
   ["住宅空间方案辅助", "客户需求整理、风格定位、空间布局优化与方案表达。"],
@@ -21,6 +23,11 @@ const tools = ["Figma", "Photoshop", "SketchUp", "AutoCAD", "酷家乐", "HTML/C
 
 function render() {
   document.querySelector("#app").innerHTML = `
+    <div class="site-background" aria-hidden="true">
+      <div class="background-wash"></div>
+      <div class="background-grid"></div>
+      <div class="pixel-snow-layer" data-pixel-snow></div>
+    </div>
     <main class="page-shell">
       <nav class="nav-bar" aria-label="Primary navigation">
         <a class="logo" href="#top" aria-label="Velorah home">
@@ -137,3 +144,18 @@ function render() {
 }
 
 render();
+
+const snowHost = document.querySelector('[data-pixel-snow]');
+if (snowHost) {
+  initPixelSnow(snowHost, {
+    color: '#b8f0d1',
+    flakeSize: 0.011,
+    minFlakeSize: 1.1,
+    pixelResolution: 380,
+    speed: 1.45,
+    density: 0.52,
+    direction: 128,
+    brightness: 1.55,
+    farPlane: 24
+  });
+}

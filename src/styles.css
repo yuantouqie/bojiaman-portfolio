@@ -28,9 +28,12 @@ html {
 body {
   min-height: 100%;
   margin: 0;
-  background: hsl(var(--background));
+  background:
+    linear-gradient(180deg, rgba(5, 22, 16, 0.98) 0%, rgba(4, 14, 11, 0.95) 45%, rgba(3, 8, 8, 1) 100%),
+    hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: var(--font-body);
+  overflow-x: hidden;
 }
 
 a {
@@ -38,11 +41,64 @@ a {
   text-decoration: none;
 }
 
+.site-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, rgba(19, 72, 47, 0.38) 0%, rgba(6, 18, 14, 0.86) 48%, rgba(2, 8, 7, 0.98) 100%);
+}
+
+.background-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(96, 255, 173, 0.1) 0%, rgba(0, 0, 0, 0) 25%, rgba(8, 35, 26, 0.12) 100%),
+    linear-gradient(115deg, rgba(72, 146, 112, 0.18) 0%, rgba(12, 32, 26, 0) 48%, rgba(82, 188, 137, 0.12) 100%);
+  mix-blend-mode: screen;
+}
+
+.background-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 45%, rgba(0, 0, 0, 0.18) 100%);
+}
+
+.pixel-snow-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.pixel-snow-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: screen;
+  opacity: 0.88;
+}
+
 .page-shell {
   position: relative;
+  z-index: 1;
   min-height: 100vh;
   overflow: hidden;
-  background: hsl(var(--background));
+  background: transparent;
+}
+
+.page-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(3, 10, 8, 0.22) 0%, rgba(3, 10, 8, 0.52) 100%);
 }
 
 .hero-video {
@@ -52,6 +108,8 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.8;
+  filter: saturate(1.05) contrast(1.05) brightness(0.72);
 }
 
 .nav-bar {
@@ -119,6 +177,14 @@ a {
   padding: 5.625rem 1.5rem 10rem;
   text-align: center;
   overflow: hidden;
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(3, 11, 9, 0.08) 0%, rgba(4, 16, 12, 0.34) 60%, rgba(3, 10, 8, 0.82) 100%);
 }
 
 .hero-section h1 {
@@ -205,6 +271,14 @@ a {
   max-width: 80rem;
   margin: 0 auto;
   padding: 7.5rem 2rem;
+}
+
+.content-section::before {
+  content: "";
+  position: absolute;
+  inset: 0 2rem auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184, 240, 209, 0.32), transparent);
 }
 
 .content-section h2 {
